@@ -1,0 +1,1 @@
+python -m nuitka --standalone --windows-disable-console --enable-plugin=pyside6,upx --nofollow-import-to=tkinter --upx-binary=D:\software\upx-4.0.2-win64\upx-4.0.2-win64\upx.exe --windows-icon-from-ico=images\logo.ico ExcelTools.py

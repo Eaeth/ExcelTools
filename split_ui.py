@@ -1,0 +1,150 @@
+# -*- coding: utf-8 -*-
+
+################################################################################
+## Form generated from reading UI file 'split.ui'
+##
+## Created by: Qt User Interface Compiler version 6.4.3
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
+
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QPushButton,
+    QSizePolicy, QStackedWidget, QWidget)
+
+class Ui_split(object):
+    def setupUi(self, split):
+        if not split.objectName():
+            split.setObjectName(u"split")
+        split.resize(800, 550)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(2)
+        sizePolicy.setVerticalStretch(2)
+        sizePolicy.setHeightForWidth(split.sizePolicy().hasHeightForWidth())
+        split.setSizePolicy(sizePolicy)
+        split.setMinimumSize(QSize(760, 500))
+        split.setMaximumSize(QSize(850, 600))
+        self.split_pages = QStackedWidget(split)
+        self.split_pages.setObjectName(u"split_pages")
+        self.split_pages.setGeometry(QRect(0, 0, 800, 550))
+        sizePolicy.setHeightForWidth(self.split_pages.sizePolicy().hasHeightForWidth())
+        self.split_pages.setSizePolicy(sizePolicy)
+        self.split_pages.setMinimumSize(QSize(760, 500))
+        self.split_pages.setMaximumSize(QSize(850, 600))
+        self.split_pages.setLineWidth(0)
+        self.split_openfile_page = QWidget()
+        self.split_openfile_page.setObjectName(u"split_openfile_page")
+        sizePolicy.setHeightForWidth(self.split_openfile_page.sizePolicy().hasHeightForWidth())
+        self.split_openfile_page.setSizePolicy(sizePolicy)
+        self.split_openfile_page.setMinimumSize(QSize(760, 500))
+        self.split_openfile_page.setMaximumSize(QSize(850, 600))
+        self.split_open_file_button = QPushButton(self.split_openfile_page)
+        self.split_open_file_button.setObjectName(u"split_open_file_button")
+        self.split_open_file_button.setGeometry(QRect(0, 0, 800, 550))
+        sizePolicy.setHeightForWidth(self.split_open_file_button.sizePolicy().hasHeightForWidth())
+        self.split_open_file_button.setSizePolicy(sizePolicy)
+        self.split_open_file_button.setMinimumSize(QSize(760, 500))
+        self.split_open_file_button.setMaximumSize(QSize(850, 600))
+        font = QFont()
+        font.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
+        font.setPointSize(20)
+        self.split_open_file_button.setFont(font)
+        self.split_open_file_button.setFocusPolicy(Qt.StrongFocus)
+        self.split_pages.addWidget(self.split_openfile_page)
+        self.split_para_page = QWidget()
+        self.split_para_page.setObjectName(u"split_para_page")
+        sizePolicy.setHeightForWidth(self.split_para_page.sizePolicy().hasHeightForWidth())
+        self.split_para_page.setSizePolicy(sizePolicy)
+        self.split_para_page.setMinimumSize(QSize(760, 500))
+        self.split_para_page.setMaximumSize(QSize(850, 600))
+        self.split_output_path_button = QPushButton(self.split_para_page)
+        self.split_output_path_button.setObjectName(u"split_output_path_button")
+        self.split_output_path_button.setGeometry(QRect(0, 320, 800, 50))
+        self.split_output_path_button.setFont(font)
+        self.split_end_row_label = QLabel(self.split_para_page)
+        self.split_end_row_label.setObjectName(u"split_end_row_label")
+        self.split_end_row_label.setGeometry(QRect(410, 250, 150, 50))
+        self.split_end_row_label.setFont(font)
+        self.split_end_row_entry = QLineEdit(self.split_para_page)
+        self.split_end_row_entry.setObjectName(u"split_end_row_entry")
+        self.split_end_row_entry.setGeometry(QRect(560, 250, 230, 50))
+        self.split_end_row_entry.setFont(font)
+        self.split_input_rows_label = QLabel(self.split_para_page)
+        self.split_input_rows_label.setObjectName(u"split_input_rows_label")
+        self.split_input_rows_label.setGeometry(QRect(0, 200, 800, 50))
+        self.split_input_rows_label.setFont(font)
+        self.split_start_row_entry = QLineEdit(self.split_para_page)
+        self.split_start_row_entry.setObjectName(u"split_start_row_entry")
+        self.split_start_row_entry.setGeometry(QRect(160, 250, 230, 50))
+        self.split_start_row_entry.setFont(font)
+        self.split_select_file_path = QLabel(self.split_para_page)
+        self.split_select_file_path.setObjectName(u"split_select_file_path")
+        self.split_select_file_path.setGeometry(QRect(0, 50, 800, 50))
+        font1 = QFont()
+        font1.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
+        font1.setPointSize(10)
+        self.split_select_file_path.setFont(font1)
+        self.split_select_file_path.setStyleSheet(u"background-color: rgb(247, 247, 247);")
+        self.split_start_row_label = QLabel(self.split_para_page)
+        self.split_start_row_label.setObjectName(u"split_start_row_label")
+        self.split_start_row_label.setGeometry(QRect(10, 250, 150, 50))
+        self.split_start_row_label.setFont(font)
+        self.split_select_file_label = QLabel(self.split_para_page)
+        self.split_select_file_label.setObjectName(u"split_select_file_label")
+        self.split_select_file_label.setGeometry(QRect(0, 0, 800, 50))
+        self.split_select_file_label.setFont(font)
+        self.split_column_entry = QLineEdit(self.split_para_page)
+        self.split_column_entry.setObjectName(u"split_column_entry")
+        self.split_column_entry.setGeometry(QRect(0, 150, 800, 50))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.split_column_entry.sizePolicy().hasHeightForWidth())
+        self.split_column_entry.setSizePolicy(sizePolicy1)
+        self.split_column_entry.setMinimumSize(QSize(800, 50))
+        self.split_column_entry.setMaximumSize(QSize(800, 50))
+        self.split_column_entry.setFont(font)
+        self.split_process_button = QPushButton(self.split_para_page)
+        self.split_process_button.setObjectName(u"split_process_button")
+        self.split_process_button.setGeometry(QRect(0, 420, 800, 50))
+        self.split_process_button.setFont(font)
+        self.split_column_label = QLabel(self.split_para_page)
+        self.split_column_label.setObjectName(u"split_column_label")
+        self.split_column_label.setGeometry(QRect(0, 100, 800, 50))
+        self.split_column_label.setFont(font)
+        self.split_output_path_label = QLabel(self.split_para_page)
+        self.split_output_path_label.setObjectName(u"split_output_path_label")
+        self.split_output_path_label.setGeometry(QRect(0, 370, 800, 50))
+        self.split_output_path_label.setFont(font1)
+        self.split_output_path_label.setStyleSheet(u"background-color: rgb(247, 247, 247);")
+        self.split_output_path_label.setTextInteractionFlags(Qt.LinksAccessibleByMouse)
+        self.split_pages.addWidget(self.split_para_page)
+
+        self.retranslateUi(split)
+
+        self.split_pages.setCurrentIndex(0)
+
+
+        QMetaObject.connectSlotsByName(split)
+    # setupUi
+
+    def retranslateUi(self, split):
+        split.setWindowTitle(QCoreApplication.translate("split", u"split", None))
+        self.split_open_file_button.setText(QCoreApplication.translate("split", u"\u6253\u5f00\u6587\u4ef6", None))
+        self.split_output_path_button.setText(QCoreApplication.translate("split", u"\u9009\u62e9\u8f93\u51fa\u6587\u4ef6\u5939", None))
+        self.split_end_row_label.setText(QCoreApplication.translate("split", u"\u7ed3\u675f\u884c\u53f7: ", None))
+        self.split_input_rows_label.setText(QCoreApplication.translate("split", u"\u8bf7\u8f93\u5165\u8981\u62c6\u5206\u7684\u8d77\u59cb\u884c\u53f7\u548c\u7ed3\u675f\u884c\u53f7(1-1000):", None))
+        self.split_select_file_path.setText("")
+        self.split_start_row_label.setText(QCoreApplication.translate("split", u"\u8d77\u59cb\u884c\u53f7: ", None))
+        self.split_select_file_label.setText(QCoreApplication.translate("split", u"\u5df2\u9009\u62e9\u6587\u4ef6:", None))
+        self.split_process_button.setText(QCoreApplication.translate("split", u"\u5f00\u59cb\u5904\u7406", None))
+        self.split_column_label.setText(QCoreApplication.translate("split", u"\u8bf7\u95ee\u6839\u636e\u54ea\u4e00\u5217\u7684\u5185\u5bb9\u8fdb\u884c\u62c6\u5206(\u4f8b\u5982:1\u6216A):", None))
+        self.split_output_path_label.setText("")
+    # retranslateUi
+
