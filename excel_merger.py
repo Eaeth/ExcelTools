@@ -22,6 +22,7 @@ class ExcelMerger:
         ws_out = wb_out.active
         head_row = False
         head_row_file = ''
+        row_out = 0
 
         # 读取excel文件列表
         for filename in os.listdir(self.input_path):
@@ -37,12 +38,17 @@ class ExcelMerger:
             except PermissionError:
                 return f"读取文件 {filename} 失败，请检查是否被其他程序占用"
             ws_in = wb_in.active
+            ws_in_max_column = ws_in.max_column
+            ws_in_max_row = ws_in.max_row
+
+            if ws_in_max_row < self.head_rows:
+                return f"文件 '{filename}' 表头行数不足 {self.head_rows} 行，请检查!"
 
             # 如果head_row标记为False，则拷贝表头
             if not head_row:
                 for row in range(1, self.head_rows+1):
                     ws_out.row_dimensions[row].height = ws_in.row_dimensions[row].height
-                    for col in range(1, ws_in.max_column+1):
+                    for col in range(1, ws_in_max_column+1):
                         cell_in = ws_in.cell(row=row, column=col)
                         cell_out = ws_out.cell(row=row, column=col)
                         self.copy_cell(cell_in, cell_out)
@@ -55,10 +61,11 @@ class ExcelMerger:
                 head_row = True
                 ws_out.title = ws_in.title
                 head_row_file = filepath
+                row_out = self.head_rows
             else:
                 # 检查表头是否一致
                 for row in range(1, self.head_rows+1):
-                    for col in range(1, ws_in.max_column+1):
+                    for col in range(1, ws_in_max_column+1):
                         cell_in = ws_in.cell(row=row, column=col)
                         cell_out = ws_out.cell(row=row, column=col)
                         if cell_in.value != cell_out.value:
@@ -67,15 +74,15 @@ class ExcelMerger:
                                             cell_in.value, os.path.normpath(head_row_file), cell_out.value))
 
             # 从 head_rows+1 行开始遍历数据，直到遇到空单元格为止
-            for row in range(self.head_rows+1, ws_in.max_row+1):
+            for row in range(self.head_rows+1, ws_in_max_row+1):
                 cell_in = ws_in.cell(row=row, column=self.key_column)
                 if cell_in.value is None:
                     break
 
                 # 在 ws_out 中找到下一个空行，并将当前行数据复制到该行
-                row_out = ws_out.max_row + 1
+                row_out = row_out + 1
                 ws_out.row_dimensions[row_out].height = ws_in.row_dimensions[row].height
-                for col in range(1, ws_in.max_column+1):
+                for col in range(1, ws_in_max_column+1):
                     cell_in = ws_in.cell(row=row, column=col)
                     cell_out = ws_out.cell(row=row_out, column=col)
                     self.copy_cell(cell_in, cell_out)

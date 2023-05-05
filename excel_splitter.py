@@ -25,6 +25,10 @@ class ExcelSplitter:
         except BadZipFile:
             return f"文件 '{self.input_file}' 带有密码，请去除密码后再处理!"
         ws_in = wb_in.active
+        ws_in_max_column = ws_in.max_column
+        ws_in_max_row = ws_in.max_row
+        if self.end_row > ws_in_max_row:
+            self.end_row = ws_in_max_row
 
         # 获取开始到结束行的值
         col_values = [ws_in.cell(row=i, column=self.key_column).value for i in range(
@@ -49,8 +53,8 @@ class ExcelSplitter:
             # Copy first two rows
             if self.start_row != 1:
                 for row in range(1, self.start_row):
-                    ws_out.row_dimensions[row].height = ws_in.row_dimensions[row].height
-                    for col in range(1, ws_in.max_column+1):
+                    ws_out.row_dimensions[row].height = ws_in.row_dimensions[row].height                    
+                    for col in range(1, ws_in_max_column+1):
                         ws_out.column_dimensions[get_column_letter(
                             col)].width = ws_in.column_dimensions[get_column_letter(col)].width
 
@@ -67,7 +71,7 @@ class ExcelSplitter:
             for i, row in enumerate(rows):
                 ws_out.row_dimensions[i +
                                       self.start_row].height = ws_in.row_dimensions[row].height
-                for col in range(1, ws_in.max_column+1):
+                for col in range(1, ws_in_max_column+1):
                     ws_out.column_dimensions[get_column_letter(
                         col)].width = ws_in.column_dimensions[get_column_letter(col)].width
 
@@ -83,12 +87,12 @@ class ExcelSplitter:
             # 跳过中间空白
             del_num_rows = self.end_row - self.start_row - len(rows) + 1
 
-            if ws_in.max_row > self.end_row:
+            if ws_in_max_row > self.end_row:
                 # 拷贝剩余内容
-                for row_in in range(self.end_row+1, ws_in.max_row+1):
+                for row_in in range(self.end_row+1, ws_in_max_row+1):
                     row_out = row_in - del_num_rows
                     ws_out.row_dimensions[row_out].height = ws_in.row_dimensions[row_in].height
-                    for col in range(1, ws_in.max_column+1):
+                    for col in range(1, ws_in_max_column+1):
                         ws_out.column_dimensions[get_column_letter(
                             col)].width = ws_in.column_dimensions[get_column_letter(col)].width
                         # 设置单元格格式
