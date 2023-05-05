@@ -24,10 +24,10 @@ class WidgetExcelSplit(QWidget, Ui_split):
         self.split_column_entry.setValidator(ColumnValidator())
         self.split_column_entry.textChanged.connect(
             self.on_split_column_entry_changed)
-        self.split_start_row_entry.setValidator(RowValidator(max_value=1000))
+        self.split_start_row_entry.setValidator(RowValidator(max_value=1000000))
         self.split_start_row_entry.textChanged.connect(
             self.on_start_row_entry_changed)
-        self.split_end_row_entry.setValidator(RowValidator(max_value=1000))
+        self.split_end_row_entry.setValidator(RowValidator(max_value=1000000))
         self.split_end_row_entry.textChanged.connect(
             self.on_end_row_entry_changed)
         self.split_output_path_button.clicked.connect(self.choose_output_path)

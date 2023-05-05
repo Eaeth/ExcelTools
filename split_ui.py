@@ -139,7 +139,7 @@ class Ui_split(object):
         self.split_open_file_button.setText(QCoreApplication.translate("split", u"\u6253\u5f00\u6587\u4ef6", None))
         self.split_output_path_button.setText(QCoreApplication.translate("split", u"\u9009\u62e9\u8f93\u51fa\u6587\u4ef6\u5939", None))
         self.split_end_row_label.setText(QCoreApplication.translate("split", u"\u7ed3\u675f\u884c\u53f7: ", None))
-        self.split_input_rows_label.setText(QCoreApplication.translate("split", u"\u8bf7\u8f93\u5165\u8981\u62c6\u5206\u7684\u8d77\u59cb\u884c\u53f7\u548c\u7ed3\u675f\u884c\u53f7(1-1000):", None))
+        self.split_input_rows_label.setText(QCoreApplication.translate("split", u"\u8bf7\u8f93\u5165\u8981\u62c6\u5206\u7684\u8d77\u59cb\u884c\u53f7\u548c\u7ed3\u675f\u884c\u53f7(1-1000000):", None))
         self.split_select_file_path.setText("")
         self.split_start_row_label.setText(QCoreApplication.translate("split", u"\u8d77\u59cb\u884c\u53f7: ", None))
         self.split_select_file_label.setText(QCoreApplication.translate("split", u"\u5df2\u9009\u62e9\u6587\u4ef6:", None))

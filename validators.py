@@ -4,7 +4,7 @@ from PySide6.QtGui import QValidator
 from openpyxl.utils.cell import column_index_from_string
 
 class RowValidator(QValidator):
-    def __init__(self, max_value=1000):
+    def __init__(self, max_value=1000000):
         super().__init__()
         self.max_value = max_value
 
@@ -21,7 +21,7 @@ class ColumnValidator(QValidator):
     def validate(self, value, pos):
         try:
             if value.isdigit():
-                if 1 <= int(value) <= 100:
+                if 1 <= int(value) <= 10000:
                     return (QValidator.Acceptable, value, pos)
                 else:
                     return (QValidator.Invalid, value, pos)
