@@ -52,7 +52,7 @@ class Ui_main(object):
         self.toolsWidget.setStyleSheet(u"")
         self.toolsWidget.setTabPosition(QTabWidget.North)
         self.toolsWidget.setTabShape(QTabWidget.Rounded)
-        self.toolsWidget.setIconSize(QSize(324, 50))
+        self.toolsWidget.setIconSize(QSize(192, 50))
         self.toolsWidget.setElideMode(Qt.ElideMiddle)
         self.toolsWidget.setUsesScrollButtons(True)
         self.toolsWidget.setDocumentMode(False)
@@ -77,6 +77,11 @@ class Ui_main(object):
         icon2 = QIcon()
         icon2.addFile(u":/images/images/merge.png", QSize(), QIcon.Normal, QIcon.Off)
         self.toolsWidget.addTab(self.merge, icon2, "")
+        self.encryption = QWidget()
+        self.encryption.setObjectName(u"encryption")
+        icon3 = QIcon()
+        icon3.addFile(u":/images/images/password.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.toolsWidget.addTab(self.encryption, icon3, "")
 
         self.verticalLayout.addWidget(self.toolsWidget)
 
@@ -93,5 +98,6 @@ class Ui_main(object):
         main.setWindowTitle(QCoreApplication.translate("main", u"\u8868\u683c\u5de5\u5177", None))
         self.toolsWidget.setTabText(self.toolsWidget.indexOf(self.split), QCoreApplication.translate("main", u"\u8868\u683c\u5206\u5272", None))
         self.toolsWidget.setTabText(self.toolsWidget.indexOf(self.merge), QCoreApplication.translate("main", u"\u8868\u683c\u5408\u5e76", None))
+        self.toolsWidget.setTabText(self.toolsWidget.indexOf(self.encryption), QCoreApplication.translate("main", u"\u8868\u683c\u52a0\u5bc6", None))
     # retranslateUi
 

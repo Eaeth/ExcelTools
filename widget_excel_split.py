@@ -30,9 +30,12 @@ class WidgetExcelSplit(QWidget, Ui_split):
         self.split_end_row_entry.setValidator(RowValidator(max_value=1000000))
         self.split_end_row_entry.textChanged.connect(
             self.on_end_row_entry_changed)
+        self.input_password_entry.textChanged.connect(
+            self.on_password_entry_changed)
         self.split_output_path_button.clicked.connect(self.choose_output_path)
         self.split_pages.currentChanged.connect(self.on_current_widget_changed)
         self.split_pages.setCurrentWidget(self.split_openfile_page)
+        self.password = None
 
     def get_file_name(self):
         self.file_path, _ = QFileDialog.getOpenFileName(
@@ -59,7 +62,7 @@ class WidgetExcelSplit(QWidget, Ui_split):
 
     def do_task(self, *args, **kwargs):
         result = ExcelSplitter(self.file_path, self.start_rows, self.end_rows,
-                               self.split_col, self.output_path).split_excel_by_column()
+                               self.split_col, self.output_path,self.password).split_excel_by_column()
         return result
 
     def on_start_row_entry_changed(self, text):
@@ -73,6 +76,11 @@ class WidgetExcelSplit(QWidget, Ui_split):
             self.end_rows = int(text)
         else:
             self.end_rows = None
+    def on_password_entry_changed(self, text):
+        if text:
+            self.password = text
+        else:
+            self.password = None
 
     def on_split_column_entry_changed(self, text):
         try:
@@ -96,6 +104,7 @@ class WidgetExcelSplit(QWidget, Ui_split):
             self.split_output_path_button.setText("选择输出文件夹")
             self.split_output_path_label.setText("")
             self.split_start_row_entry.setText("2")
+            self.input_password_entry.setText("")
             self.split_end_row_entry.setText("50")
             self.split_column_entry.setText("A")
         else:

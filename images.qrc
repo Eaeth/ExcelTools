@@ -3,5 +3,6 @@
     <file>images/logo.ico</file>
     <file>images/merge.png</file>
     <file>images/splite.png</file>
+    <file>images/password.png</file>
   </qresource>
 </RCC>

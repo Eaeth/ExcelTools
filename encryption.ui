@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>split</class>
- <widget class="QWidget" name="split">
+ <class>encryption</class>
+ <widget class="QWidget" name="encryption">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,9 +29,9 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>split</string>
+   <string>encryption</string>
   </property>
-  <widget class="QStackedWidget" name="split_pages">
+  <widget class="QStackedWidget" name="encryption_pages">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -64,7 +64,7 @@
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="split_openfile_page">
+   <widget class="QWidget" name="encryption_open_dir_page">
     <property name="sizePolicy">
      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
       <horstretch>2</horstretch>
@@ -83,7 +83,7 @@
       <height>600</height>
      </size>
     </property>
-    <widget class="QPushButton" name="split_open_file_button">
+    <widget class="QPushButton" name="encryption_open_dir_button">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -116,15 +116,18 @@
        <pointsize>20</pointsize>
       </font>
      </property>
-     <property name="focusPolicy">
-      <enum>Qt::StrongFocus</enum>
-     </property>
      <property name="text">
-      <string>打开文件</string>
+      <string>导入文件夹</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="split_para_page">
+   <widget class="QWidget" name="encryption_para_page">
     <property name="sizePolicy">
      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
       <horstretch>2</horstretch>
@@ -143,7 +146,7 @@
       <height>600</height>
      </size>
     </property>
-    <widget class="QPushButton" name="split_output_path_button">
+    <widget class="QPushButton" name="encryption_output_path_button">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -159,34 +162,15 @@
       </font>
      </property>
      <property name="text">
-      <string>选择输出文件夹</string>
+      <string>请选择输出文件</string>
      </property>
     </widget>
-    <widget class="QLabel" name="split_end_row_label">
+    <widget class="QLineEdit" name="encryption_input_entry">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>200</x>
        <y>250</y>
-       <width>150</width>
-       <height>50</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>结束行号: </string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="split_end_row_entry">
-     <property name="geometry">
-      <rect>
-       <x>560</x>
-       <y>250</y>
-       <width>230</width>
+       <width>600</width>
        <height>50</height>
       </rect>
      </property>
@@ -197,69 +181,12 @@
       </font>
      </property>
     </widget>
-    <widget class="QLabel" name="split_input_rows_label">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>200</y>
-       <width>800</width>
-       <height>50</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>请输入要拆分的起始行号和结束行号(1-1000000):</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="split_start_row_entry">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>250</y>
-       <width>230</width>
-       <height>50</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-    </widget>
-    <widget class="QLabel" name="split_select_file_path">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>50</y>
-       <width>800</width>
-       <height>50</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(247, 247, 247);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="split_start_row_label">
+    <widget class="QLabel" name="encryption_input_label">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>250</y>
-       <width>150</width>
+       <width>180</width>
        <height>50</height>
       </rect>
      </property>
@@ -270,10 +197,10 @@
       </font>
      </property>
      <property name="text">
-      <string>起始行号: </string>
+      <string>请输入密码：</string>
      </property>
     </widget>
-    <widget class="QLabel" name="split_select_file_label">
+    <widget class="QLabel" name="encryption_import_label">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -289,44 +216,10 @@
       </font>
      </property>
      <property name="text">
-      <string>已选择文件:</string>
+      <string>已导入文件:</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="split_column_entry">
-     <property name="geometry">
-      <rect>
-       <x>560</x>
-       <y>100</y>
-       <width>230</width>
-       <height>50</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>230</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>800</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="split_process_button">
+    <widget class="QPushButton" name="encryption_process_button">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -345,26 +238,7 @@
       <string>开始处理</string>
      </property>
     </widget>
-    <widget class="QLabel" name="split_column_label">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>100</y>
-       <width>550</width>
-       <height>50</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>请问根据哪一列的内容进行拆分(例如:1或A):</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="split_output_path_label">
+    <widget class="QLabel" name="encryption_output_path_label">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -389,39 +263,26 @@
       <set>Qt::LinksAccessibleByMouse</set>
      </property>
     </widget>
-    <widget class="QLineEdit" name="input_password_entry">
-     <property name="geometry">
-      <rect>
-       <x>560</x>
-       <y>150</y>
-       <width>230</width>
-       <height>50</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-    </widget>
-    <widget class="QLabel" name="input_password_label">
+    <widget class="QListView" name="encryption_import_list_view">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>150</y>
-       <width>511</width>
-       <height>50</height>
+       <y>50</y>
+       <width>800</width>
+       <height>180</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>20</pointsize>
-      </font>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>2</horstretch>
+       <verstretch>2</verstretch>
+      </sizepolicy>
      </property>
-     <property name="text">
-      <string>若启用密码加密，请直接在右侧输入密码：</string>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(247, 247, 247);</string>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
      </property>
     </widget>
    </widget>

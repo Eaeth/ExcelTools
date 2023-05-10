@@ -6,15 +6,17 @@ import copy
 from openpyxl.utils import get_column_letter
 from zipfile import BadZipFile
 from util import get_date_str
+import win32com.client
 
 
 class ExcelSplitter:
-    def __init__(self, input_file, start_row, end_row, key_column, out_put_path):
+    def __init__(self, input_file, start_row, end_row, key_column, out_put_path, password):
         self.input_file = input_file
         self.start_row = start_row
         self.end_row = end_row
         self.key_column = key_column
         self.out_put_path = out_put_path
+        self.password = password
         self.data_dict = {}
 
     def split_excel_by_column(self):
@@ -24,6 +26,11 @@ class ExcelSplitter:
             wb_in = openpyxl.load_workbook(self.input_file)
         except BadZipFile:
             return f"文件 '{self.input_file}' 带有密码，请去除密码后再处理!"
+
+        if self.password != None:
+            excel = win32com.client.Dispatch("Excel.Application")
+            excel.Visible = False
+
         ws_in = wb_in.active
         ws_in_max_column = ws_in.max_column
         ws_in_max_row = ws_in.max_row
@@ -53,7 +60,7 @@ class ExcelSplitter:
             # Copy first two rows
             if self.start_row != 1:
                 for row in range(1, self.start_row):
-                    ws_out.row_dimensions[row].height = ws_in.row_dimensions[row].height                    
+                    ws_out.row_dimensions[row].height = ws_in.row_dimensions[row].height
                     for col in range(1, ws_in_max_column+1):
                         ws_out.column_dimensions[get_column_letter(
                             col)].width = ws_in.column_dimensions[get_column_letter(col)].width
@@ -117,8 +124,17 @@ class ExcelSplitter:
             except PermissionError:
                 return f"保存文件 {save_path} 失败，请检查是否被其他程序占用"
             wb_out.close()
+            if self.password != None:
+                workbook = excel.Workbooks.Open(save_path)
+                workbook.Password = self.password
+                # 保存Excel文件
+                workbook.Save()
+                # 关闭Excel文件和应用程序
+                workbook.Close()
 
         wb_in.close()
+        if self.password != None:
+            excel.Quit()
 
     def copy_cell(self, cell_in, cell_out):
         # 复制单元格的值、样式、边框、对齐方式、字体、填充颜色

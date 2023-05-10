@@ -91,7 +91,7 @@
      </property>
      <property name="iconSize">
       <size>
-       <width>324</width>
+       <width>192</width>
        <height>50</height>
       </size>
      </property>
@@ -165,6 +165,15 @@
       </attribute>
       <attribute name="title">
        <string>表格合并</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="encryption">
+      <attribute name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/password.png</normaloff>:/images/images/password.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>表格加密</string>
       </attribute>
      </widget>
     </widget>
