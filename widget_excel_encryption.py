@@ -86,6 +86,14 @@ class WidgetExcelEncryption(QWidget, Ui_encryption):
         if not all([self.input_path, self.password, self.output_path]):
             QMessageBox.critical(self, "处理异常", "请填写完整参数！")
             return
+        selectedButton = self.buttonGroup.checkedButton()
+        if selectedButton is None:
+            QMessageBox.critical(self, "处理异常", "请选择加密或者解密！")
+            return
+        elif selectedButton == self.encryption_radio_button:
+            self.is_encryption = True
+        elif selectedButton == self.decrypt_radio_button:
+            self.is_encryption = False
 
         # 设置任务并启动线程
         self.worker_thread.set_task(func=self.do_task)
@@ -94,7 +102,7 @@ class WidgetExcelEncryption(QWidget, Ui_encryption):
 
     def do_task(self, *args, **kwargs):
         result = ExcelEncryption(
-            self.input_path, self.output_path, self.password).encryption_excels()
+            self.input_path, self.output_path, self.password, self.is_encryption).encryption_excels()
         return result
 
     def on_current_widget_changed(self):
@@ -105,6 +113,7 @@ class WidgetExcelEncryption(QWidget, Ui_encryption):
             self.encryption_input_entry.setText("")
             self.model.setStringList([])
             self.encryption_import_list_view.setModel(self.model)
+            self.encryption_radio_button.setChecked(True)
 
         else:
             self.file_path = None

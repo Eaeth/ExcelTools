@@ -7,6 +7,7 @@ from openpyxl.utils import get_column_letter
 from zipfile import BadZipFile
 from util import get_date_str
 import win32com.client
+import pywintypes
 
 
 class ExcelSplitter:
@@ -28,8 +29,17 @@ class ExcelSplitter:
             return f"文件 '{self.input_file}' 带有密码，请去除密码后再处理!"
 
         if self.password != None:
-            excel = win32com.client.Dispatch("Excel.Application")
-            excel.Visible = False
+            try:
+                excel = win32com.client.gencache.EnsureDispatch(
+                    'Excel.Application')
+            except pywintypes.com_error:
+                try:
+                    excel = win32com.client.gencache.EnsureDispatch(
+                        'KWPS.Application')
+                    excel.Quit()
+                    return "请打开 WPS Office 兼容选项\n位置: 设置->组件管理->文件格式关联...->兼容第三方系统和软件"
+                except pywintypes.com_error:
+                    return "未找到 Microsoft Excel 或 WPS Office,请先安装！"
 
         ws_in = wb_in.active
         ws_in_max_column = ws_in.max_column
@@ -122,6 +132,9 @@ class ExcelSplitter:
             try:
                 wb_out.save(save_path)
             except PermissionError:
+                wb_in.close()
+                if self.password != None:
+                    excel.Quit()
                 return f"保存文件 {save_path} 失败，请检查是否被其他程序占用"
             wb_out.close()
             if self.password != None:

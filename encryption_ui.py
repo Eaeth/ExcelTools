@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QApplication, QLabel, QLineEdit,
-    QListView, QPushButton, QSizePolicy, QStackedWidget,
-    QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QButtonGroup, QLabel,
+    QLineEdit, QListView, QPushButton, QRadioButton,
+    QSizePolicy, QStackedWidget, QWidget)
 
 class Ui_encryption(object):
     def setupUi(self, encryption):
@@ -70,11 +70,11 @@ class Ui_encryption(object):
         self.encryption_output_path_button.setFont(font)
         self.encryption_input_entry = QLineEdit(self.encryption_para_page)
         self.encryption_input_entry.setObjectName(u"encryption_input_entry")
-        self.encryption_input_entry.setGeometry(QRect(200, 250, 600, 50))
+        self.encryption_input_entry.setGeometry(QRect(160, 250, 300, 50))
         self.encryption_input_entry.setFont(font)
         self.encryption_input_label = QLabel(self.encryption_para_page)
         self.encryption_input_label.setObjectName(u"encryption_input_label")
-        self.encryption_input_label.setGeometry(QRect(10, 250, 180, 50))
+        self.encryption_input_label.setGeometry(QRect(10, 250, 150, 50))
         self.encryption_input_label.setFont(font)
         self.encryption_import_label = QLabel(self.encryption_para_page)
         self.encryption_import_label.setObjectName(u"encryption_import_label")
@@ -100,6 +100,33 @@ class Ui_encryption(object):
         self.encryption_import_list_view.setSizePolicy(sizePolicy)
         self.encryption_import_list_view.setStyleSheet(u"background-color: rgb(247, 247, 247);")
         self.encryption_import_list_view.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.encryption_radio_button = QRadioButton(self.encryption_para_page)
+        self.buttonGroup = QButtonGroup(encryption)
+        self.buttonGroup.setObjectName(u"buttonGroup")
+        self.buttonGroup.setExclusive(True)
+        self.buttonGroup.addButton(self.encryption_radio_button)
+        self.encryption_radio_button.setObjectName(u"encryption_radio_button")
+        self.encryption_radio_button.setGeometry(QRect(500, 250, 80, 50))
+        self.encryption_radio_button.setLayoutDirection(Qt.LeftToRight)
+        self.encryption_radio_button.setAutoFillBackground(False)
+        self.encryption_radio_button.setStyleSheet(u"QRadioButton {\n"
+"    font-size: 20pt;\n"
+"    font-family: \"\u5fae\u8f6f\u96c5\u9ed1\";\n"
+"}\n"
+"")
+        self.encryption_radio_button.setIconSize(QSize(50, 50))
+        self.encryption_radio_button.setAutoExclusive(True)
+        self.decrypt_radio_button = QRadioButton(self.encryption_para_page)
+        self.buttonGroup.addButton(self.decrypt_radio_button)
+        self.decrypt_radio_button.setObjectName(u"decrypt_radio_button")
+        self.decrypt_radio_button.setGeometry(QRect(620, 250, 80, 50))
+        self.decrypt_radio_button.setAutoFillBackground(False)
+        self.decrypt_radio_button.setStyleSheet(u"QRadioButton {\n"
+"    font-size: 20pt;\n"
+"    font-family: \"\u5fae\u8f6f\u96c5\u9ed1\";\n"
+"}\n"
+"")
+        self.decrypt_radio_button.setAutoExclusive(True)
         self.encryption_pages.addWidget(self.encryption_para_page)
 
         self.retranslateUi(encryption)
@@ -118,5 +145,7 @@ class Ui_encryption(object):
         self.encryption_import_label.setText(QCoreApplication.translate("encryption", u"\u5df2\u5bfc\u5165\u6587\u4ef6:", None))
         self.encryption_process_button.setText(QCoreApplication.translate("encryption", u"\u5f00\u59cb\u5904\u7406", None))
         self.encryption_output_path_label.setText("")
+        self.encryption_radio_button.setText(QCoreApplication.translate("encryption", u"\u52a0\u5bc6", None))
+        self.decrypt_radio_button.setText(QCoreApplication.translate("encryption", u"\u89e3\u5bc6", None))
     # retranslateUi
 
